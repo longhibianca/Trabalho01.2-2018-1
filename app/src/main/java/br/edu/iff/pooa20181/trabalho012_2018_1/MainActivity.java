@@ -62,4 +62,30 @@ public class MainActivity extends AppCompatActivity {
         }
         return horaExtra;
     }
+
+    public double calcularPrecoDaFalta()
+    {
+        String cargo;
+        int numFaltas;
+        double precoFalta = 0.0;
+
+        cargo = edtCargo.getText().toString();
+        cargo = cargo.toLowerCase();
+        cargo = cargo.trim();
+
+        numFaltas = Integer.parseInt(edtNumFaltas.getText().toString());
+
+        if(cargo.equals("gerente")) {
+            precoFalta = 2000/30;
+        }
+        else if (cargo.equals("supervisor"))
+        {
+            precoFalta = 900/30;
+        }
+        else if(cargo.equals("servente"))
+        {
+            precoFalta = 300/30;
+        }
+       return precoFalta * numFaltas;
+    }
 }
