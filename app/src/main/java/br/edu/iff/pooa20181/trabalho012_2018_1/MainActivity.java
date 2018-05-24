@@ -44,10 +44,17 @@ public class MainActivity extends AppCompatActivity {
     public double calcularHoraExtra()
     {
         String cargo;
+        String horas, hora, minuto;
         double horaExtra = 0.0;
+        double horaExtraPorMin;
+        double qtdHrExtra;
+        int posicao;
+
         cargo = edtCargo.getText().toString();
         cargo = cargo.toLowerCase();
         cargo = cargo.trim();
+
+        qtdHrExtra = Double.parseDouble(edtHorasExtras.getText().toString());
 
         if(cargo.equals("gerente")) {
             horaExtra = (2000 / 240) * 2;
@@ -60,9 +67,16 @@ public class MainActivity extends AppCompatActivity {
         {
             horaExtra = (300 / 240) * 2;
         }
-        return horaExtra;
-    }
+        horaExtraPorMin = horaExtra/60;
 
+        horas = String.valueOf(qtdHrExtra);
+        posicao = horas.indexOf(".");
+        minuto = horas.substring(posicao+1);
+        hora = horas.substring(0,posicao-1);
+
+        qtdHrExtra = (60 * Integer.parseInt(hora)) + Integer.parseInt(minuto);
+        return horaExtraPorMin * qtdHrExtra;
+    }
     public double calcularPrecoDaFalta()
     {
         String cargo;
@@ -86,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
         {
             precoFalta = 300/30;
         }
-       return precoFalta * numFaltas;
+        return precoFalta * numFaltas;
     }
 }
+
+
