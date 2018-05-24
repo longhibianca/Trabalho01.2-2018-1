@@ -2,6 +2,7 @@ package br.edu.iff.pooa20181.trabalho012_2018_1;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -31,5 +32,34 @@ public class MainActivity extends AppCompatActivity {
         proventos = (TextView) findViewById(R.id.totalProventos);
         descontos = (TextView) findViewById(R.id.descontos);
         salLiquido = (TextView) findViewById(R.id.salLiquido);
+
+        btnCalcular.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
+    public double calcularHoraExtra()
+    {
+        String cargo;
+        double horaExtra = 0.0;
+        cargo = edtCargo.getText().toString();
+        cargo = cargo.toLowerCase();
+        cargo = cargo.trim();
+
+        if(cargo.equals("gerente")) {
+            horaExtra = (2000 / 240) * 2;
+        }
+        else if (cargo.equals("supervisor"))
+        {
+            horaExtra = (900 / 240) * 2;
+        }
+        else if(cargo.equals("servente"))
+        {
+            horaExtra = (300 / 240) * 2;
+        }
+        return horaExtra;
     }
 }
