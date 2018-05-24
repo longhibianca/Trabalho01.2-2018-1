@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Trabalho01.2-2018-1</string>
+    <string name="calcular">Calcular</string>
+    <string name="num_filhos">Número de filhos</string>
+    <string name="num_faltas">Número de faltas</string>
+    <string name="hora_extra">Horas extras trabalhadas</string>
+    <string name="cargo">Cargo</string>
+</resources>
