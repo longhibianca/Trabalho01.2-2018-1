@@ -187,6 +187,19 @@ public class MainActivity extends AppCompatActivity {
         return calculaProventos() - calculaDescontos();
     }
 
+    public boolean verificarCargo()
+    {
+        String cargo;
+        cargo = edtCargo.getText().toString();
+        cargo = cargo.toLowerCase();
+        cargo = cargo.trim();
+
+        if(cargo.equals("gerente") || cargo.equals("supervisor") || cargo.equals("servente"))
+        {
+            return true;
+        }
+        return false;
+    }
     public void calculos()
     {
         double provento, desconto, salarioLiq;
@@ -195,9 +208,20 @@ public class MainActivity extends AppCompatActivity {
         desconto = calculaDescontos();
         salarioLiq = calcularSalarioLiquido();
 
-        proventos.setText("Proventos:" + df.format(provento));
-        descontos.setText("Descontos: " + df.format(desconto));
-        salLiquido.setText("Salário Líquido: " + df.format(salarioLiq));
+        if(verificarCargo())
+        {
+            proventos.setText("Proventos:" + df.format(provento));
+            descontos.setText("Descontos: " + df.format(desconto));
+            salLiquido.setText("Salário Líquido: " + df.format(salarioLiq));
+        }
+        else
+        {
+            AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
+            dlg.setMessage("Insira um cargo válido.");
+            dlg.setNeutralButton("OK", null);
+            dlg.show();
+        }
+
     }
 }
 

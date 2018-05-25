@@ -4,5 +4,5 @@
     <string name="num_filhos">Número de filhos</string>
     <string name="num_faltas">Número de faltas</string>
     <string name="hora_extra">Horas extras trabalhadas</string>
-    <string name="cargo">Cargo</string>
+    <string name="cargo">Gerente,Supervisor ou Servente</string>
 </resources>
