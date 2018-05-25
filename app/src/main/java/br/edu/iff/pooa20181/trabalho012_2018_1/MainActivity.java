@@ -159,6 +159,15 @@ public class MainActivity extends AppCompatActivity {
         return 0.10 * calculaProventos();
     }
 
+    public double calculaDescontos()
+    {
+        return calcularPrecoDaFalta() + calcularINSS();
+    }
+
+    public double calcularSalarioLiquido()
+    {
+        return calculaProventos() - calculaDescontos();
+    }
 
 }
 
