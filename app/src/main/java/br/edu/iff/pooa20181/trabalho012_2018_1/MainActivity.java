@@ -130,10 +130,10 @@ public class MainActivity extends AppCompatActivity {
         return precoFilho * qtdFilhos;
     }
 
-    public void calculaProventos()
+    public double calculaProventos()
     {
         String cargo;
-        double proventos;
+        double proventos = 0.0;
 
         cargo = edtCargo.getText().toString();
         cargo = cargo.toLowerCase();
@@ -150,6 +150,8 @@ public class MainActivity extends AppCompatActivity {
         {
             proventos = 300 + calcularHoraExtra() + precoFilhos();
         }
+
+        return proventos;
     }
 }
 
