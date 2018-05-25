@@ -2,10 +2,13 @@ package br.edu.iff.pooa20181.trabalho012_2018_1;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import java.text.DecimalFormat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -36,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                calculos();
             }
         });
     }
@@ -45,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
     {
         String cargo;
         String horas, hora, minuto;
-        double horaExtra = 0.0;
+        double horaExtra = 0.00000000;
         double horaExtraPorMin;
         double qtdHrExtra;
         int posicao;
@@ -57,24 +60,26 @@ public class MainActivity extends AppCompatActivity {
         qtdHrExtra = Double.parseDouble(edtHorasExtras.getText().toString());
 
         if(cargo.equals("gerente")) {
-            horaExtra = (2000 / 240) * 2;
+            horaExtra = (2000.00*2)/240;
         }
         else if (cargo.equals("supervisor"))
         {
-            horaExtra = (900 / 240) * 2;
+            horaExtra = (900.00 / 240) * 2;
         }
         else if(cargo.equals("servente"))
         {
-            horaExtra = (300 / 240) * 2;
+            horaExtra = (300.00 / 240) * 2;
         }
         horaExtraPorMin = horaExtra/60;
 
         horas = String.valueOf(qtdHrExtra);
         posicao = horas.indexOf(".");
         minuto = horas.substring(posicao+1);
-        hora = horas.substring(0,posicao-1);
+
+        hora = horas.substring(0,posicao);
 
         qtdHrExtra = (60 * Integer.parseInt(hora)) + Integer.parseInt(minuto);
+
         return horaExtraPorMin * qtdHrExtra;
     }
     public double calcularPrecoDaFalta()
@@ -169,6 +174,18 @@ public class MainActivity extends AppCompatActivity {
         return calculaProventos() - calculaDescontos();
     }
 
+    public void calculos()
+    {
+        double provento, desconto, salarioLiq;
+        DecimalFormat df = new DecimalFormat("###,##0.00");
+        provento = calculaProventos();
+        desconto = calculaDescontos();
+        salarioLiq = calcularSalarioLiquido();
+
+        proventos.setText("Proventos:" + df.format(provento));
+        descontos.setText("Descontos: " + df.format(desconto));
+        salLiquido.setText("Salário Líquido: " + df.format(salarioLiq));
+    }
 }
 
 
