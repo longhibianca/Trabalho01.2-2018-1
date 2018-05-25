@@ -129,6 +129,28 @@ public class MainActivity extends AppCompatActivity {
 
         return precoFilho * qtdFilhos;
     }
+
+    public void calculaProventos()
+    {
+        String cargo;
+        double proventos;
+
+        cargo = edtCargo.getText().toString();
+        cargo = cargo.toLowerCase();
+        cargo = cargo.trim();
+
+        if(cargo.equals("gerente")) {
+            proventos = 2000 + calcularHoraExtra() + precoFilhos();
+        }
+        else if (cargo.equals("supervisor"))
+        {
+            proventos = 900 + calcularHoraExtra() + precoFilhos();
+        }
+        else if(cargo.equals("servente"))
+        {
+            proventos = 300 + calcularHoraExtra() + precoFilhos();
+        }
+    }
 }
 
 
