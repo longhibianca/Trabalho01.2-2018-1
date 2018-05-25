@@ -1,5 +1,6 @@
 package br.edu.iff.pooa20181.trabalho012_2018_1;
 
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -39,7 +40,18 @@ public class MainActivity extends AppCompatActivity {
         btnCalcular.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                calculos();
+                if((edtCargo.getText().toString().isEmpty()) || (edtHorasExtras.getText().toString().isEmpty()) ||
+                        (edtNumFaltas.getText().toString().isEmpty()) || (edtNumFilhos.getText().toString().isEmpty()))
+                {
+                    AlertDialog.Builder dlg = new AlertDialog.Builder(MainActivity.this);
+                    dlg.setMessage("Os campos não podem estar em branco");
+                    dlg.setNeutralButton("OK", null);
+                    dlg.show();
+                }
+                else
+                {
+                    calculos();
+                }
             }
         });
     }
@@ -70,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
         {
             horaExtra = (300.00 / 240) * 2;
         }
+
         horaExtraPorMin = horaExtra/60;
 
         horas = String.valueOf(qtdHrExtra);
