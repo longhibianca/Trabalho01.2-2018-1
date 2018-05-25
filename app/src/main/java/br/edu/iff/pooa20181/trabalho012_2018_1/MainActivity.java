@@ -102,6 +102,33 @@ public class MainActivity extends AppCompatActivity {
         }
         return precoFalta * numFaltas;
     }
+
+    public double precoFilhos()
+    {
+        String cargo;
+        int qtdFilhos;
+        double precoFilho = 0.0;
+
+        cargo = edtCargo.getText().toString();
+        cargo = cargo.toLowerCase();
+        cargo = cargo.trim();
+
+        qtdFilhos = Integer.parseInt(edtNumFilhos.getText().toString());
+
+        if(cargo.equals("gerente")) {
+            precoFilho = 0.03 * 2000;
+        }
+        else if (cargo.equals("supervisor"))
+        {
+            precoFilho = 0.03 * 900;
+        }
+        else if(cargo.equals("servente"))
+        {
+            precoFilho = 0.03 * 300;
+        }
+
+        return precoFilho * qtdFilhos;
+    }
 }
 
 
