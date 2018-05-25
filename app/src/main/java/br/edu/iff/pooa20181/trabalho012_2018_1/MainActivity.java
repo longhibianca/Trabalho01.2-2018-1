@@ -153,6 +153,13 @@ public class MainActivity extends AppCompatActivity {
 
         return proventos;
     }
+
+    public double calcularINSS()
+    {
+        return 0.10 * calculaProventos();
+    }
+
+
 }
 
 
